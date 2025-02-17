@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 //Configure Multer for Image File Uploads
 const storage = multer.diskStorage({
-  destination: './public/uploads/',
+  destination: './uploads/',
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname))
   },
@@ -91,11 +91,11 @@ app.post('/delete/:id', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'docs', 'admin.htm'));
+  res.sendFile(path.join(__dirname,'admin.htm'));
 });
 
 app.get('/add', (req, res) => {
-  res.sendFile(path.join(__dirname, 'docs', 'add.htm'));
+  res.sendFile(path.join(__dirname, 'add.htm'));
 });
 
 const PORT = process.env.PORT || 3000;
