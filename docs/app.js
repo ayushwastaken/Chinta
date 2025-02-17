@@ -91,11 +91,11 @@ app.post('/delete/:id', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname,'admin.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'admin.htm'));
 });
 
 app.get('/add', (req, res) => {
-  res.sendFile(path.join(__dirname, 'add.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'add.htm'));
 });
 
 const PORT = process.env.PORT || 3000;
