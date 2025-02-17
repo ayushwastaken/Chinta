@@ -28,7 +28,7 @@ db.serialize(() => {
 
 //Routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'index.htm'));
 });
 
 //Posts
@@ -62,7 +62,7 @@ app.get('/posts/:title', (req, res) => {
 });
 
 app.get('/post-details/:title', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'post-details.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'post-details.htm'));
 });
 
 app.post('/add', upload.single('image'), (req, res) => {
@@ -91,11 +91,11 @@ app.post('/delete/:id', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'admin.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'admin.htm'));
 });
 
 app.get('/add', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'add.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'add.htm'));
 });
 
 const PORT = process.env.PORT || 3000;
