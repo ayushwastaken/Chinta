@@ -28,7 +28,7 @@ db.serialize(() => {
 
 //Routes
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'index.htm'));
 });
 
 //Posts
@@ -62,12 +62,12 @@ app.get('/posts/:title', (req, res) => {
 });
 
 app.get('/post-details/:title', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'post-details.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'post-details.htm'));
 });
 
 app.post('/add', upload.single('image'), (req, res) => {
     const {title, category, content} = req.body;
-    const image = req.file ? `/uploads/${req.file.filename}` : null;
+    const image = req.file ? `public/uploads/${req.file.filename}` : null;
 
     db.run("INSERT INTO posts (title, category, content, image, created_at) VALUES (?,?,?,?, CURRENT_TIMESTAMP)", [title, category, content, image],
       (err) => {
@@ -91,11 +91,11 @@ app.post('/delete/:id', (req, res) => {
 })
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'admin.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'admin.htm'));
 });
 
 app.get('/add', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'add.htm'));
+  res.sendFile(path.join(__dirname, 'docs', 'add.htm'));
 });
 
 const PORT = process.env.PORT || 3000;
